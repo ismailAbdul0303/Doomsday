@@ -4,15 +4,19 @@
 USE [Doomsday]
 GO
 
--- Power Type IA
+-- Water CB 
 
--- Power IA
+-- Factions IA
+
+-- Alliances IA
 
 -- Location Type AH
 
 -- Locations AH
 
--- Water CB 
+-- Power Type IA
+
+-- Power IA
 
 -- Lodging CB
 
@@ -21,10 +25,6 @@ GO
 -- Virus Transmissions CB
 
 -- Virus Transmission Details CB
-
--- Factions IA
-
--- Alliances IA
 
 -- Role Types AH
 
