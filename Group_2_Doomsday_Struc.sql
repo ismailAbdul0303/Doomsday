@@ -6,15 +6,19 @@ GO
 CREATE DATABASE [Doomsday]
 GO
 
--- Power Type IA
+-- Water CB 
 
--- Power IA
+-- Factions IA
+
+-- Alliances IA
 
 -- Location Type AH
 
 -- Locations AH
 
--- Water CB 
+-- Power Type IA
+
+-- Power IA
 
 -- Lodging CB
 
@@ -24,15 +28,22 @@ GO
 
 -- Virus Transmission Details CB
 
--- Factions IA
-
--- Alliances IA
-
 -- Role Types AH
 
 -- Work Roles AH
 
 -- People LR
+
+CREATE TABLE People(
+    personKey VARCHAR(8) PRIMARY KEY NOT NULL,
+    personFirstName VARCHAR(50) NOT NULL,
+    personLastName VARCHAR(50) NULL,
+    personAge INT NULL,
+    factionKey VARCHAR(8) NULL FOREIGN KEY REFERENCES Factions(factionKey),
+    roleKey VARCHAR(8) NULL FOREIGN KEY REFERENCES WorkRoles(roleKey),
+
+    CHECK (Age>=0)
+);
 
 -- Zombies LR
 
