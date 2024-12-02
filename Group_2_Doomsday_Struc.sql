@@ -5,6 +5,8 @@ USE [master]
 GO
 CREATE DATABASE [Doomsday]
 GO
+USE [Doomsday]
+GO
 
 -- Location Type AH
 
@@ -22,7 +24,7 @@ CREATE TABLE Locations(
     locationLatitude DECIMAL(9,6) NOT NULL,
     locationLongitude DECIMAL(9,6) NOT NULL,
     locationDescrption VARCHAR(500) NULL,
-    locationSafe BOOLEAN NOT NULL DEFAULT FALSE,
+    locationSafe BIT NOT NULL DEFAULT 0,
     locationUpdated DATETIME DEFAULT GETDATE()
 );
 
@@ -40,7 +42,7 @@ CREATE TABLE Water(
 
 CREATE TABLE Factions(
     factionKey VARCHAR(8) PRIMARY KEY NOT NULL,
-    factionName VARCHAR(20) UNIQUE NOT NULL,
+    factionName VARCHAR(75) UNIQUE NOT NULL,
     factionStr TINYINT NULL CHECK(factionStr BETWEEN 1 AND 10),
     locationKey VARCHAR(8) NULL FOREIGN KEY REFERENCES Locations(locationKey)
 );
@@ -49,8 +51,10 @@ CREATE TABLE Factions(
 
 CREATE TABLE Alliances(
     factionKeyA VARCHAR(8) NOT NULL FOREIGN KEY REFERENCES Factions(factionKey),
-    factionKeyB VARCHAR(8) NOT NULL FOREIGN KEY REFERENCES Factions(factionKey) CHECK(factionKeyB != factionKeyA),
-    relationship VARCHAR(20) NOT NULL
+    factionKeyB VARCHAR(8) NOT NULL FOREIGN KEY REFERENCES Factions(factionKey),
+    relationship VARCHAR(20) NOT NULL,
+
+	CHECK(factionKeyB != factionKeyA)
 );
 
 -- Power Type IA
